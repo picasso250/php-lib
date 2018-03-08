@@ -18,6 +18,7 @@ require SRC_ROOT.'/lib/lib.php';
 
 autoload_dir("Lib", SRC_ROOT.'/lib');
 
+require SRC_ROOT.'/define.php';
 require SRC_ROOT.'/logic.php';
 
 session_start();
