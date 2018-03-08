@@ -29,10 +29,10 @@ autoload_dir("Model", SRC_ROOT."/model");
 
 env_load(SRC_ROOT);
 
+$config = INI_Config::load(CONFIG_ROOT, "main");
 Container::set('config', $config);
 Container::set('db', function () use ($config) {
-	$dbc = $config['db'];
-	$dbConnection = new PDO($dbc['dsn'], $dbc['username'], $dbc['password']);
+	$dbConnection = new PDO($_ENV['db_dsn'], $_ENV['db_username'], $_ENV['db_password']);
 	$dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 	$dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	return $dbConnection;
